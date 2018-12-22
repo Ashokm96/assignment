@@ -20,3 +20,7 @@ ssh-copy-id ubuntu@ip address of 2nd instance
 configuration management tool i.e ANSIBLE 
 imstall ansible -> sudo apt-add-repository ppa:ansible/ansible
 sudo apt-get update --> sudo apt-get install ansible
+NVM, Node, Git,and  Docker are installed using ansible
+sudo vim /etc/ansible/hosts  --> enter private address of 2nd instance
+create ansible playbook for install softwares
+vim playbook1.yml   --> pressing i insert mode 
