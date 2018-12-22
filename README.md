@@ -15,3 +15,8 @@ sudo vi sshd_config
 click "i" because insert mode and on file search file password authentication and change it from no to yes
 restart ssh i.e sudo service restart
 open the 1st instance 
+ssh-keygen after enter 3 times because authomatically taken password
+ssh-copy-id ubuntu@ip address of 2nd instance
+configuration management tool i.e ANSIBLE 
+imstall ansible -> sudo apt-add-repository ppa:ansible/ansible
+sudo apt-get update --> sudo apt-get install ansible
