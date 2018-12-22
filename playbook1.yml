@@ -1,0 +1,29 @@
+---
+ - name: testing on local
+   hosts: localhost
+   become: yes 
+   tasks:
+    - name: use shell on loc
+      shell:
+       sudo apt-get update;curl -fsSL https://get.docker.com -o get-docker.sh;
+       sh get-docker.sh;
+       sudo apt-get update;sudo apt-get install -y nodejs
+ 
+    - name: git module
+      apt:
+       name: git
+       state: present 
+ - name: testing on remote
+   hosts: all
+   become: yes 
+   tasks:
+    - name: use shell on remote
+      shell: 
+       sudo apt-get update;curl -fsSL https://get.docker.com -o get-docker.sh;
+       sh get-docker.sh; sudo apt-get update;
+       sudo apt-get install -y nodejs
+    - name: git module
+      apt:
+       name: git
+       state: present
+...
