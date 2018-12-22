@@ -23,4 +23,40 @@ sudo apt-get update --> sudo apt-get install ansible
 NVM, Node, Git,and  Docker are installed using ansible
 sudo vim /etc/ansible/hosts  --> enter private address of 2nd instance
 create ansible playbook for install softwares
-vim playbook1.yml   --> pressing i insert mode 
+vim playbook1.yml   --> pressing i insert mode
+
+---
+ - name: testing on local
+   hosts: localhost
+   become: yes 
+   tasks:
+    - name: use shell on loc
+      shell:
+       sudo apt-get update;curl -fsSL https://get.docker.com -o get-docker.sh;
+       sh get-docker.sh;
+       sudo apt-get update;sudo apt-get install -y nodejs
+ 
+    - name: git module
+      apt:
+       name: git
+       state: present 
+ - name: testing on remote
+   hosts: all
+   become: yes 
+   tasks:
+    - name: use shell on remote
+      shell: 
+       sudo apt-get update;curl -fsSL https://get.docker.com -o get-docker.sh;
+       sh get-docker.sh; sudo apt-get update;
+       sudo apt-get install -y nodejs
+    - name: git module
+      apt:
+       name: git
+       state: present
+...
+
+and remaining docker compose install by ansible on adhoc commands
+sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+gicheck the version of git and docker compose by -->
+git --version and docker-compose --version
